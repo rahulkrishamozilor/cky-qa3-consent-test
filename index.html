@@ -3,6 +3,19 @@
 <head>
 <meta charset="utf-8">
 <title>CookieYes QA3 Consent Trends Test Page</title>
+<!-- Google Consent Mode v2 default state - must run before the CMP and before gtag.js
+     so Google's library has a synchronous denied-by-default signal to respect immediately -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'denied',
+    'wait_for_update': 2000
+  });
+</script>
 <!-- Start cookieyes banner -->
 <script id="cookieyes" type="text/javascript" src="https://cdn-staging.cookieyes.com/client_data/f0d49f7546ff75bb201fe16a161daff3/script.js"></script>
 <!-- End cookieyes banner -->
