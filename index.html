@@ -3,25 +3,33 @@
 <head>
 <meta charset="utf-8">
 <title>CookieYes QA3 Consent Trends Test Page</title>
-<!-- Google Consent Mode v2 default state - must run before the CMP and before gtag.js
-     so Google's library has a synchronous denied-by-default signal to respect immediately -->
+<!-- Google Consent Mode v2 default state, exact snippet per CookieYes's own documentation
+     (cookieyes.com/documentation/integrate-gcm-for-google-services-without-gtm/) - must run
+     before both the CookieYes script and gtag.js -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('consent', 'default', {
-    'ad_storage': 'denied',
-    'ad_user_data': 'denied',
-    'ad_personalization': 'denied',
-    'analytics_storage': 'denied',
-    'wait_for_update': 2000
+  gtag("consent", "default", {
+    ad_storage: "denied",
+    ad_user_data: "denied",
+    ad_personalization: "denied",
+    analytics_storage: "denied",
+    functionality_storage: "denied",
+    personalization_storage: "denied",
+    security_storage: "granted",
+    wait_for_update: 2000,
   });
+  gtag("set", "ads_data_redaction", true);
+  gtag("set", "url_passthrough", true);
 </script>
 <!-- Start cookieyes banner -->
 <script id="cookieyes" type="text/javascript" src="https://cdn-staging.cookieyes.com/client_data/f0d49f7546ff75bb201fe16a161daff3/script.js"></script>
 <!-- End cookieyes banner -->
-<!-- Google tag (gtag.js) - test tag for C37208 GCM verification, placed after CookieYes so
-     CookieYes's Consent Mode defaults are pushed to dataLayer before gtag.js initializes -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-QA3TESTTAG1"></script>
+<!-- Google tag (gtag.js) for C37208 GCM verification, placed after CookieYes per CookieYes's
+     documented order, WITH data-cookieyes="cookieyes-analytics" per CookieYes's own documented
+     manual-tagging example (cookieyes.com/documentation/implement-prior-consent-using-cookieyes/)
+     so this script is actually under CookieYes's auto-blocking control, not a free-floating tag -->
+<script async data-cookieyes="cookieyes-analytics" src="https://www.googletagmanager.com/gtag/js?id=G-QA3TESTTAG1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
