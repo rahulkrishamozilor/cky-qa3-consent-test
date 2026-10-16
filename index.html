@@ -6,6 +6,15 @@
 <!-- Start cookieyes banner -->
 <script id="cookieyes" type="text/javascript" src="https://cdn-staging.cookieyes.com/client_data/f0d49f7546ff75bb201fe16a161daff3/script.js"></script>
 <!-- End cookieyes banner -->
+<!-- Google tag (gtag.js) - test tag for C37208 GCM verification, placed after CookieYes so
+     CookieYes's Consent Mode defaults are pushed to dataLayer before gtag.js initializes -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QA3TESTTAG1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-QA3TESTTAG1');
+</script>
 </head>
 <body>
 <h1>CookieYes QA3 Consent Trends Test Page</h1>
